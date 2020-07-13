@@ -26,28 +26,28 @@ public class FieldElement {
 		if (Objects.isNull(other)) {
 			return false;
 		}
-		return num.equals(other.getNum()) && prime.equals(other.getPrime());
+		return num.equals(other.num) && prime.equals(other.prime);
 	}
 
 	public FieldElement add(FieldElement other) {
-		if (!prime.equals(other.getPrime())) {
+		if (!prime.equals(other.prime)) {
 			throw new IllegalArgumentException("Cannot add two numbers in different Fields.");
 		}
-		return new FieldElement(num.add(other.getNum()).mod(prime), prime);
+		return new FieldElement(num.add(other.num).mod(prime), prime);
 	}
 
 	public FieldElement sub(FieldElement other) {
-		if (!prime.equals(other.getPrime())) {
+		if (!prime.equals(other.prime)) {
 			throw new IllegalArgumentException("Cannot subtract two numbers in different Fields.");
 		}
-		return new FieldElement(num.subtract(other.getNum()).mod(prime), prime);
+		return new FieldElement(num.subtract(other.num).mod(prime), prime);
 	}
 
 	public FieldElement mul(FieldElement other) {
-		if (!prime.equals(other.getPrime())) {
+		if (!prime.equals(other.prime)) {
 			throw new IllegalArgumentException("Cannot multiply two numbers in different Fields.");
 		}
-		return new FieldElement(num.multiply(other.getNum()).mod(prime), prime);
+		return new FieldElement(num.multiply(other.num).mod(prime), prime);
 	}
 
 	public FieldElement pow(BigInteger exponent) {
@@ -56,10 +56,10 @@ public class FieldElement {
 	}
 
 	public FieldElement div(FieldElement other) {
-		if (!prime.equals(other.getPrime())) {
+		if (!prime.equals(other.prime)) {
 			throw new IllegalArgumentException("Cannot divide two numbers in different Fields.");
 		}
 		return new FieldElement(
-				num.multiply(other.getNum().modPow(prime.subtract(new BigInteger("2")), prime)).mod(prime), prime);
+				num.multiply(other.num.modPow(prime.subtract(new BigInteger("2")), prime)).mod(prime), prime);
 	}
 }
