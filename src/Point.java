@@ -21,9 +21,6 @@ public class Point {
 		}
 		if (!this.y.pow(new BigInteger("2"))
 				.equals(this.x.pow(new BigInteger("3")).add(this.a.mul(this.x)).add(this.b))) {
-			System.out.println(this.y.pow(new BigInteger("2")).toString());
-			System.out.println(this.x.pow(new BigInteger("3")).add(this.a.mul(this.x)).add(this.b).toString());
-			
 			throw new IllegalArgumentException(
 					String.format("x=%s, y=%s is not on the curve.", this.x.toString(), this.y.toString()));
 		}
